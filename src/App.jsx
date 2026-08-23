@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { createClient } from '@supabase/supabase-js'
 import Cookies from 'js-cookie'
 import './App.css'
@@ -6,45 +6,45 @@ import './App.css'
 const questions = [
   {
     id: 1,
-    question: "Quel plat déteste-t-il ou quel aliment ne mange-t-il pas ?",
-    options: ["REPONSE 1", "REPONSE 2", "REPONSE 3", "REPONSE 4"],
-    correctAnswer: "REPONSE 1"
+    question: "Quel Aliment ne mange-t-il pas ?",
+    options: ["le camenbert", "la salade verte", "l'entrecôte"],
+    correctAnswer: "la salade verte"
   },
   {
     id: 2,
     question: "Quel sport a-t-il pratiqué ?",
-    options: ["REPONSE 1", "REPONSE 2", "REPONSE 3", "REPONSE 4"],
-    correctAnswer: "REPONSE 1"
+    options: ["le Football", "Le Tennis", "la Moto-cross", "la natation"],
+    correctAnswer: "la Moto-cross"
   },
   {
     id: 3,
     question: "Quel est son dernier voyage ?",
-    options: ["REPONSE 1", "REPONSE 2", "REPONSE 3", "REPONSE 4"],
-    correctAnswer: "REPONSE 1"
+    options: ["le Sénégal", "le Canada", "la Russie", "la Thaîlande"],
+    correctAnswer: "la Thaîlande"
   },
   {
     id: 4,
     question: "Combien a-t-il de petits-enfants ?",
-    options: ["REPONSE 1", "REPONSE 2", "REPONSE 3", "REPONSE 4"],
-    correctAnswer: "REPONSE 1"
+    options: ["5", "6", "7", "8"],
+    correctAnswer: "7"
   },
   {
     id: 5,
     question: "Quel est son deuxième prénom ?",
-    options: ["REPONSE 1", "REPONSE 2", "REPONSE 3", "REPONSE 4"],
-    correctAnswer: "REPONSE 1"
+    options: ["Christiant", "Bernard", "Jean", "Marcel"],
+    correctAnswer: "Christiant"
   },
   {
     id: 6,
     question: "Quelle est sa gourmandise préférée ?",
-    options: ["REPONSE 1", "REPONSE 2", "REPONSE 3", "REPONSE 4"],
-    correctAnswer: "REPONSE 1"
+    options: ["la Glace", "le Chocolat", "Cookies", "Barbapapa"],
+    correctAnswer: "le chocolat"
   },
   {
     id: 7,
     question: "Quelle est la marque de sa première voiture ?",
-    options: ["REPONSE 1", "REPONSE 2", "REPONSE 3", "REPONSE 4"],
-    correctAnswer: "REPONSE 1"
+    options: ["Peugeot", "Citroën", "Renault", "Mercedes"],
+    correctAnswer: "?"
   },
   {
     id: 8,
@@ -55,56 +55,56 @@ const questions = [
   {
     id: 9,
     question: "Quelle est sa date de naissance ?",
-    options: ["REPONSE 1", "REPONSE 2", "REPONSE 3", "REPONSE 4"],
-    correctAnswer: "REPONSE 1"
+    options: ["08/08/1958", "29/08/1956", "22/08/1956", "29/07/1956"],
+    correctAnswer: "22/08/1956"
   },
   {
     id: 10,
     question: "Quels sont les prénoms de ses chiens ?",
-    options: ["REPONSE 1", "REPONSE 2", "REPONSE 3", "REPONSE 4"],
-    correctAnswer: "REPONSE 1"
+    options: ["Ninja et Donatelo", "Ninja et Michel", "Ninja et Biaska", "Ninja et Sam"],
+    correctAnswer: "Ninja et Biaska"
   },
   {
     id: 11,
     question: "Quel permis Joël n'a-t-il pas ?",
-    options: ["REPONSE 1", "REPONSE 2", "REPONSE 3", "REPONSE 4"],
-    correctAnswer: "REPONSE 1"
+    options: ["transport en commun", "Super Poids lourd", "Permis B", "Bateau"],
+    correctAnswer: "Bateau"
   },
   {
     id: 12,
     question: "Quel type de style a-t-il eu ?",
-    options: ["REPONSE 1", "REPONSE 2", "REPONSE 3", "REPONSE 4"],
-    correctAnswer: "REPONSE 1"
+    options: ["Coupe mulet", "Barbe", "Cheveux longs", "Moustache"],
+    correctAnswer: "Moustache"
   },
   {
     id: 13,
     question: "Combien de personnes sommes-nous aujourd'hui pour venir fêter ses 70 ans ?",
-    options: ["REPONSE 1", "REPONSE 2", "REPONSE 3", "REPONSE 4"],
-    correctAnswer: "REPONSE 1"
+    options: ["100", "150", "200", "250"],
+    correctAnswer: "?"
   },
   {
     id: 14,
     question: "Quelle est la marque de sa première moto ?",
-    options: ["REPONSE 1", "REPONSE 2", "REPONSE 3", "REPONSE 4"],
-    correctAnswer: "REPONSE 1"
+    options: ["Ducati", "Suzuki", "BMW", "Guzzi"],
+    correctAnswer: "?"
   },
   {
     id: 15,
     question: "Quelle est sa boisson préférée ?",
-    options: ["REPONSE 1", "REPONSE 2", "REPONSE 3", "REPONSE 4"],
-    correctAnswer: "REPONSE 1"
+    options: ["Jus d'orange", "Bierre", "Rouge", "Whisky"],
+    correctAnswer: "Whisky"
   },
   {
     id: 16,
     question: "Quel succès cinématographique français est sorti l'année de ses 10 ans ?",
-    options: ["REPONSE 1", "REPONSE 2", "REPONSE 3", "REPONSE 4"],
-    correctAnswer: "REPONSE 1"
+    options: ["La grande Vadrouille", "les demoiselles de rochefort", "James Bond", "Le Livre de la Jungle"],
+    correctAnswer: "La grande Vadrouille"
   },
   {
     id: 17,
-    question: "Quelle personne célèbre française est née le même mois que Joël ?",
-    options: ["REPONSE 1", "REPONSE 2", "REPONSE 3", "REPONSE 4"],
-    correctAnswer: "REPONSE 1"
+    question: "Quelle personne célèbre est née en aout 1956 ?",
+    options: ["claire chazal", "Michel Bernier", "Tom Hanks", "Michael Jackson"],
+    correctAnswer: "Michel Bernier"
   }
 ]
 
