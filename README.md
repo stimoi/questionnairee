@@ -18,12 +18,12 @@ Application web de questionnaire interactive qui envoie les résultats à un web
 npm install
 ```
 
-2. Lancer le serveur de développement :
+2. Lancer le serveur local Node.js :
 ```bash
 npm run dev
 ```
 
-3. Ouvrir le navigateur à l'URL affichée (généralement http://localhost:5173)
+3. Ouvrir http://localhost:3000. Le panel admin est disponible sur http://localhost:3000/admin/.
 
 ## Configuration du Webhook Discord
 
@@ -51,10 +51,20 @@ const questions = [
 ]
 ```
 
+## Déploiement Render
+
+Utiliser les paramètres suivants pour un Web Service Node.js :
+
+- **Build Command** : `npm install && npm run build`
+- **Start Command** : `npm start`
+- **Environment** : `Node`
+
+Le serveur écoute automatiquement le port fourni par Render via `PORT`.
+
 ## Build pour la production
 
 ```bash
 npm run build
 ```
 
-Les fichiers build seront dans le dossier `dist`.
+Les bundles compilés par esbuild et les fichiers statiques sont générés dans `dist`.

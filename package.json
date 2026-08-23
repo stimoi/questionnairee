@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "node build.mjs && node --watch server.js",
+    "build": "node build.mjs",
+    "start": "node server.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.3",
@@ -17,7 +17,6 @@
   "devDependencies": {
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
-    "@vitejs/plugin-react": "^4.2.1",
-    "vite": "^5.0.8"
+    "esbuild": "^0.25.0"
   }
 }
