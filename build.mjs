@@ -15,6 +15,7 @@ await build({
   format: 'esm',
   minify: true,
   outfile: `${distPath}/assets/questionnaire.js`,
+  loader: { '.css': 'css' },
 })
 
 await build({
@@ -23,16 +24,15 @@ await build({
   format: 'esm',
   minify: true,
   outfile: `${distPath}/admin/assets/admin.js`,
+  loader: { '.css': 'css' },
 })
 
-const questionnaireHtml = (await readFile('index.html', 'utf8')).replace(
-  '/src/main.jsx',
-  '/assets/questionnaire.js',
-)
-const adminHtml = (await readFile('admin-panel/index.html', 'utf8')).replace(
-  '/src/main.jsx',
-  '/admin/assets/admin.js',
-)
+const questionnaireHtml = (await readFile('index.html', 'utf8'))
+  .replace('/src/main.jsx', '/assets/questionnaire.js')
+  .replace('</head>', '    <link rel="stylesheet" href="/assets/questionnaire.css">\n  </head>')
+const adminHtml = (await readFile('admin-panel/index.html', 'utf8'))
+  .replace('/src/main.jsx', '/admin/assets/admin.js')
+  .replace('</head>', '    <link rel="stylesheet" href="/admin/assets/admin.css">\n  </head>')
 
 await writeFile(new URL('./index.html', distDirectory), questionnaireHtml)
 await writeFile(new URL('./admin/index.html', distDirectory), adminHtml)
