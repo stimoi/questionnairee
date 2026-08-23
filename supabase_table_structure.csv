@@ -1,0 +1,7 @@
+column_name,data_type,is_nullable,default_value,description
+id,bigint,NO,,Primary key (auto-generated)
+score,integer,NO,,Number of correct answers
+total_questions,integer,NO,,Total number of questions
+percentage,integer,NO,,Percentage of correct answers (0-100)
+answers,jsonb,NO,,JSON array containing all question details and user responses
+created_at,timestamptz,NO,now(),Timestamp of record creation
