@@ -44,13 +44,13 @@ const questions = [
     id: 7,
     question: "Quelle est la marque de sa première voiture ?",
     options: ["Peugeot", "Citroën", "Renault", "Mercedes"],
-    correctAnswer: "?"
+    correctAnswer: "Peugeot"
   },
   {
     id: 8,
-    question: "Qui a parcouru le plus de kilomètres pour venir ce jour ?",
-    options: ["REPONSE 1", "REPONSE 2", "REPONSE 3", "REPONSE 4"],
-    correctAnswer: "REPONSE 1"
+    question: "Combien de Km a parcouru la personne la plus éloignée pour venir aujourd'hui ?",
+    options: ["165", "285", "212", "331"],
+    correctAnswer: "285"
   },
   {
     id: 9,
@@ -79,14 +79,14 @@ const questions = [
   {
     id: 13,
     question: "Combien de personnes sommes-nous aujourd'hui pour venir fêter ses 70 ans ?",
-    options: ["100", "150", "200", "250"],
-    correctAnswer: "?"
+    options: ["111", "112", "113", "114"],
+    correctAnswer: "112"
   },
   {
     id: 14,
     question: "Quelle est la marque de sa première moto ?",
-    options: ["Ducati", "Suzuki", "BMW", "Guzzi"],
-    correctAnswer: "?"
+    options: ["Ducati", "Suzuki", "BMW", "Laverda"],
+    correctAnswer: "Laverda"
   },
   {
     id: 15,
